@@ -1,0 +1,17 @@
+<h1>New Project</h1>
+
+<%= form_for @changeset, project_path(@conn, :create), fn f -> %>
+  <div class="form-group">
+    <label for="project_title">Title</label>
+    <%= text_input f, :title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <label for="project_description">Description</label>
+    <%= textarea f, :description, class: "form-control" %>
+  </div>
+
+  <div class="form-actions">
+    <%= submit "Create Project", class: "btn btn-primary" %>
+  </div>
+<% end %>

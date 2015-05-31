@@ -1,0 +1,3 @@
+<h1>Projects</h1>
+
+<a href="<%= project_path(@conn, :new) %>" class="btn btn-primary">New Project</a>
