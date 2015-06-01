@@ -6,7 +6,8 @@ defmodule Ticketee.ProjectController do
   plug :action
 
   def index(conn, _) do
-    render conn, :index
+    projects = Repo.all(Project)
+    render conn, :index, projects: projects
   end
 
   def new(conn, _) do
