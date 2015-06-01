@@ -48,6 +48,7 @@ defmodule Ticketee.Web do
 
       # Use all HTML functionality (forms, tags, etc)
       use Phoenix.HTML
+      import Ticketee.FormView
     end
   end
 

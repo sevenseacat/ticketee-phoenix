@@ -2,8 +2,8 @@ defmodule Ticketee.ProjectController do
   use Ticketee.Web, :controller
   alias Ticketee.Project
 
+  plug :scrub_params, "project" when action in [:create, :update]
   plug :action
-  plug :scrub_params, :project when action in [:create, :update]
 
   def index(conn, _) do
     render conn, :index

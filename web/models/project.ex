@@ -8,8 +8,8 @@ defmodule Ticketee.Project do
     timestamps
   end
 
-  @required_fields ~w(title description)
-  @optional_fields ~w()
+  @required_fields ~w(title)
+  @optional_fields ~w(description)
 
   @doc """
   Creates a changeset based on the `model` and `params`.
