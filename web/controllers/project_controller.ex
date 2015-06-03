@@ -31,4 +31,23 @@ defmodule Ticketee.ProjectController do
     project = Repo.get(Project, id)
     render conn, :show, project: project
   end
+
+  def edit(conn, %{"id" => id}) do
+    project = Repo.get(Project, id)
+    changeset = Project.changeset(project)
+    render conn, :edit, project: project, changeset: changeset
+  end
+
+  def update(conn, %{"id" => id, "project" => project_params}) do
+    project = Repo.get(Project, id)
+    changeset = Project.changeset(project, project_params)
+    if changeset.valid? do
+      Repo.update(changeset)
+      conn
+      |> put_flash(:info, "Project updated succesfully.")
+      |> redirect to: project_path(conn, :show, project)
+    else
+      render conn, :edit, project: project, changeset: changeset
+    end
+  end
 end
