@@ -1,6 +1,4 @@
 <%= form_for @changeset, @action, fn f -> %>
-<% IO.inspect @changeset %>
-<% IO.inspect f %>
   <div class="form-group">
     <label for="project_title">Title</label>
     <%= text_input f, :title, class: "form-control" %>
