@@ -1,10 +1,12 @@
 <h1>Projects</h1>
 
-<a href="<%= project_path(@conn, :new) %>" class="btn btn-primary">New Project</a>
+<ul class="list-inline">
+  <li><%= link "New Project", to: project_path(@conn, :new), class: "btn btn-primary" %></li>
+</ul>
 
 <div id="projects">
   <%= for project <- @projects do %>
-    <h2><a href="<%= project_path(@conn, :show, project) %>"><%= project.title %></a></h2>
+    <h2><%= link project.title, to: project_path(@conn, :show, project) %></h2>
     <p><%= project.description %></p>
   <% end %>
 </div>

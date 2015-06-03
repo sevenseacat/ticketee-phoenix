@@ -1,3 +1,8 @@
 <h1><%= @project.title %></h1>
 
+<ul class="list-inline">
+  <li><%= link "Edit Project", to: project_path(@conn, :edit, @project), class: "btn btn-primary" %></li>
+  <li><%= link "Delete Project", to: project_path(@conn, :delete, @project), method: :delete, class: "btn btn-danger" %></li>
+</ul>
+
 <p><%= @project.description %></p>

@@ -14,6 +14,6 @@
   </div>
 
   <div class="form-actions">
-    <%= submit "Create Project", class: "btn btn-primary" %>
+    <%= submit submit_label(@changeset.model), class: "btn btn-primary" %>
   </div>
 <% end %>

@@ -5,4 +5,11 @@ defmodule Ticketee.ProjectView do
   def page_title(action, _) when action in [:new, :create], do: "Create Project"
   def page_title(action, _) when action in [:edit, :update], do: "Edit Project"
   def page_title(_, _),           do: "Projects"
+
+  def submit_label(model) do
+    case model.id do
+      nil -> "Create Project"
+      _   -> "Update Project"
+    end
+  end
 end
