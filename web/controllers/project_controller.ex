@@ -50,4 +50,12 @@ defmodule Ticketee.ProjectController do
       render conn, :edit, project: project, changeset: changeset
     end
   end
+
+  def delete(conn, %{"id" => id}) do
+    project = Repo.get(Project, id)
+    Repo.delete(project)
+    conn
+    |> put_flash(:info, "Project deleted successfully")
+    |> redirect to: project_path(conn, :index)
+  end
 end
