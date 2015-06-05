@@ -17,9 +17,13 @@ defmodule Ticketee.Mixfile do
   # Type `mix help compile.app` for more information
   def application do
     [mod: {Ticketee, []},
-     applications: [:phoenix, :phoenix_html, :cowboy, :logger,
-                    :phoenix_ecto, :postgrex]]
+     applications: app_list(Mix.env)]
   end
+
+  defp app_list(:test), do: [:hound | app_list]
+  defp app_list(_),     do: app_list
+  defp app_list,        do: [:phoenix, :phoenix_html, :cowboy, :logger,
+                              :phoenix_ecto, :postgrex]
 
   # Specifies which paths to compile per environment
   defp elixirc_paths(:test), do: ["lib", "web", "test/support"]
@@ -34,6 +38,7 @@ defmodule Ticketee.Mixfile do
      {:postgrex, ">= 0.0.0"},
      {:phoenix_html, "~> 1.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
-     {:cowboy, "~> 1.0"}]
+     {:cowboy, "~> 1.0"},
+     {:hound, "~> 0.6.0", github: "HashNuke/hound"}]
   end
 end

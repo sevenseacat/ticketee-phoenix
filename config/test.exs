@@ -4,7 +4,7 @@ use Mix.Config
 # you can enable the server option below.
 config :ticketee, Ticketee.Endpoint,
   http: [port: 4001],
-  server: false
+  server: true
 
 # Print only warnings and errors during test
 config :logger, level: :warn
@@ -16,3 +16,5 @@ config :ticketee, Ticketee.Repo,
   password: "postgres",
   database: "ticketee_test",
   size: 1 # Use a single connection for transactional tests
+
+config :hound, driver: "phantomjs"
