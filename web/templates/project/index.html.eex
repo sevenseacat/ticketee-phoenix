@@ -1,7 +1,9 @@
-<h1>Projects</h1>
+<header>
+  <h1>Projects</h1>
+</header>
 
 <ul class="list-inline">
-  <li><%= link "New Project", to: project_path(@conn, :new), class: "btn btn-primary" %></li>
+  <li><%= link "New Project", to: project_path(@conn, :new), class: "btn btn-success" %></li>
 </ul>
 
 <div id="projects">

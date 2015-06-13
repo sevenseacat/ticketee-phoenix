@@ -1,3 +1,5 @@
-<h1>Edit Project</h1>
+<header>
+  <h1>Edit Project</h1>
+</header>
 
 <%= render "form.html", changeset: @changeset, action: project_path(@conn, :update, @project) %>

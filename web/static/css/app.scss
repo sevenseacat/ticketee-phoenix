@@ -78,3 +78,20 @@ form.link, form.button {
     border-bottom: 0;
   }
 }
+
+
+
+
+
+
+/* Ticketee styles */
+
+body { margin-top: 70px; }
+
+header {
+  @extend .page-header;
+  padding-bottom: 0px;
+  margin-top: 20px;
+}
+
+#projects h2 { font-size: 18px; font-weight: bold; }

@@ -1,4 +1,6 @@
-<h1><%= @project.title %></h1>
+<header>
+  <h1><%= @project.title %></h1>
+</header>
 
 <ul class="list-inline">
   <li><%= link "Edit Project", to: project_path(@conn, :edit, @project), class: "btn btn-primary" %></li>
