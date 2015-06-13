@@ -22,6 +22,12 @@ defmodule Ticketee.TicketController do
     end
   end
 
+  def show(conn, %{"id" => id}) do
+    ticket = Repo.get!(Ticket, id)
+    project = Repo.one! assoc(ticket, :project)
+    render conn, :show, ticket: ticket, project: project
+  end
+
   defp load_project(conn, _) do
     case Repo.get(Ticketee.Project, conn.params["project_id"]) do
       nil ->

@@ -19,6 +19,6 @@
 
 <ul class="list-unstyled">
 <%= for ticket <- @tickets do %>
-  <li><strong>#<%= ticket.id %>:</strong> <%= ticket.title %></li>
+  <li><strong>#<%= ticket.id %>:</strong> <%= link ticket.title, to: ticket_path(@conn, :show, ticket) %></li>
 <% end %>
 </ul>

@@ -1,0 +1,8 @@
+<header>
+  <h1>
+    <%= @ticket.title %>
+    <small><%= @project.title %></small>
+  </h1>
+</header>
+
+<p><%= @ticket.description %></p>

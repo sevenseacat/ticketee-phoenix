@@ -19,6 +19,8 @@ defmodule Ticketee.Router do
     resources "projects", ProjectController do
       resources "tickets", TicketController, only: [:new, :create]
     end
+
+    resources "tickets", TicketController, only: [:show]
   end
 
   # Other scopes may use custom stacks.

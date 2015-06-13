@@ -4,7 +4,8 @@ defmodule Ticketee.Ticket do
   schema "tickets" do
     field :title, :string
     field :description, :string
-    field :project_id, :integer
+
+    belongs_to :project, Ticketee.Project
 
     timestamps
   end
