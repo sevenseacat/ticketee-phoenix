@@ -20,7 +20,7 @@ defmodule Ticketee.Router do
       resources "tickets", TicketController, only: [:new, :create]
     end
 
-    resources "tickets", TicketController, only: [:show, :edit, :update]
+    resources "tickets", TicketController, only: [:show, :edit, :update, :delete]
   end
 
   # Other scopes may use custom stacks.

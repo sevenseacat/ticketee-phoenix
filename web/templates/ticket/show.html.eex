@@ -7,6 +7,7 @@
 
 <ul class="list-inline">
   <li><%= link "Edit Ticket", to: ticket_path(@conn, :edit, @ticket), class: "btn btn-primary" %></li>
+  <li><%= link "Delete Ticket", to: ticket_path(@conn, :delete, @ticket), method: :delete, class: "btn btn-danger" %></li>
 </ul>
 
 <p><%= @ticket.description %></p>

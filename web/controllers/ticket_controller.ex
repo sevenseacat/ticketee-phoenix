@@ -45,6 +45,12 @@ defmodule Ticketee.TicketController do
     end
   end
 
+  def delete(conn, _) do
+    Repo.delete conn.assigns[:ticket]
+    conn  |> put_flash(:info, "Ticket deleted successfully.")
+          |> redirect to: project_path(conn, :show, conn.assigns[:ticket].project_id)
+  end
+
   defp load_project(conn, _) do
     case Repo.get(Ticketee.Project, conn.params["project_id"]) do
       nil ->
