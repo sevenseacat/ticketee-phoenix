@@ -9,6 +9,8 @@ defmodule Ticketee.Project do
     timestamps
   end
 
+  after_delete :remove_tickets
+
   @required_fields ~w(title)
   @optional_fields ~w(description)
 
@@ -21,5 +23,10 @@ defmodule Ticketee.Project do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+  end
+
+  defp remove_tickets(changeset) do
+    Ticketee.Repo.delete_all assoc(changeset.model, :tickets)
+    changeset
   end
 end
