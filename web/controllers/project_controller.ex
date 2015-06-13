@@ -3,7 +3,7 @@ defmodule Ticketee.ProjectController do
   alias Ticketee.Project
 
   plug :scrub_params, "project" when action in [:create, :update]
-  plug :load_project when action in [:edit, :update, :show, :destroy]
+  plug :load_project when action in [:edit, :update, :show, :delete]
   plug :action
 
   def index(conn, _) do
@@ -31,16 +31,16 @@ defmodule Ticketee.ProjectController do
     render conn, :show
   end
 
-  def edit(conn, %{"id" => id}) do
+  def edit(conn, _) do
     changeset = Project.changeset(conn.assigns[:project])
     render conn, :edit, changeset: changeset
   end
 
-  def update(conn, %{"id" => id, "project" => project_params}) do
+  def update(conn, %{"project" => project_params}) do
     changeset = Project.changeset(conn.assigns[:project], project_params)
     if changeset.valid? do
       Repo.update(changeset)
-      conn  |> put_flash(:info, "Project updated succesfully.")
+      conn  |> put_flash(:info, "Project updated successfully.")
             |> redirect to: project_path(conn, :show, conn.assigns[:project])
     else
       render conn, :edit, changeset: changeset
@@ -49,7 +49,7 @@ defmodule Ticketee.ProjectController do
 
   def delete(conn, _) do
     Repo.delete(conn.assigns[:project])
-    conn  |> put_flash(:info, "Project deleted successfully")
+    conn  |> put_flash(:info, "Project deleted successfully.")
           |> redirect to: project_path(conn, :index)
   end
 

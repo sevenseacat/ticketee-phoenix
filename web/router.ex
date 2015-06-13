@@ -15,7 +15,7 @@ defmodule Ticketee.Router do
   scope "/", Ticketee do
     pipe_through :browser # Use the default browser stack
 
-    get "/", PageController, :index
+    get "/", ProjectController, :index
     resources "projects", ProjectController
   end
 
