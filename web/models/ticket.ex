@@ -1,16 +1,16 @@
-defmodule Ticketee.Project do
+defmodule Ticketee.Ticket do
   use Ticketee.Web, :model
 
-  schema "projects" do
+  schema "tickets" do
     field :title, :string
     field :description, :string
-    has_many :tickets, Ticketee.Ticket
+    field :project_id, :integer
 
     timestamps
   end
 
-  @required_fields ~w(title)
-  @optional_fields ~w(description)
+  @required_fields ~w(title description project_id)
+  @optional_fields ~w()
 
   @doc """
   Creates a changeset based on the `model` and `params`.
@@ -21,5 +21,6 @@ defmodule Ticketee.Project do
   def changeset(model, params \\ :empty) do
     model
     |> cast(params, @required_fields, @optional_fields)
+    |> validate_length(:description, min: 10)
   end
 end

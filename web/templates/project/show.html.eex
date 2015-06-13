@@ -8,3 +8,17 @@
 </ul>
 
 <p><%= @project.description %></p>
+
+<header>
+  <h2>Tickets</h2>
+</header>
+
+<ul class="list-inline">
+  <li><%= link "New Ticket", to: project_ticket_path(@conn, :new, @project), class: "btn btn-success" %></li>
+</ul>
+
+<ul class="list-unstyled">
+<%= for ticket <- @tickets do %>
+  <li><strong>#<%= ticket.id %>:</strong> <%= ticket.title %></li>
+<% end %>
+</ul>

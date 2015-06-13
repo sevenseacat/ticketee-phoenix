@@ -1,0 +1,17 @@
+<%= form_for @changeset, @action, fn f -> %>
+  <div class="form-group <%= if has_error f, :title do "has-error" end %>">
+    <label class="control-label" for="project_title">Title</label>
+    <%= text_input f, :title, class: "form-control" %>
+    <%= error f, :title, class: "has-error" %>
+  </div>
+
+  <div class="form-group <%= if has_error f, :description do "has-error" end %>">
+    <label class="control-label" for="project_description">Description</label>
+    <%= textarea f, :description, class: "form-control" %>
+    <%= error f, :description, class: "has-error" %>
+  </div>
+
+  <div class="form-actions">
+    <%= submit submit_label(@changeset.model), class: "btn btn-primary" %>
+  </div>
+<% end %>

@@ -28,7 +28,8 @@ defmodule Ticketee.ProjectController do
   end
 
   def show(conn, _) do
-    render conn, :show
+    tickets = Repo.all assoc(conn.assigns[:project], :tickets)
+    render conn, :show, tickets: tickets
   end
 
   def edit(conn, _) do
