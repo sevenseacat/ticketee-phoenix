@@ -5,4 +5,8 @@
   </h1>
 </header>
 
+<ul class="list-inline">
+  <li><%= link "Edit Ticket", to: ticket_path(@conn, :edit, @ticket), class: "btn btn-primary" %></li>
+</ul>
+
 <p><%= @ticket.description %></p>

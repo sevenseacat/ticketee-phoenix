@@ -1,0 +1,5 @@
+<header>
+  <h1>Edit Ticket <small><%= @project.title %></small></h1>
+</header>
+
+<%= render "form.html", changeset: @changeset, action: ticket_path(@conn, :update, @ticket) %>
