@@ -39,6 +39,6 @@ defmodule Ticketee.Mixfile do
      {:phoenix_html, "~> 1.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:hound, "~> 0.6.0", github: "HashNuke/hound"}]
+     {:hound, "~> 0.7.0", github: "HashNuke/hound", branch: "refactor"}]
   end
 end
