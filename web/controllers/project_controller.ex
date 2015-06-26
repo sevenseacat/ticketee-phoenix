@@ -19,9 +19,9 @@ defmodule Ticketee.ProjectController do
   def create(conn, %{"project" => project_params}) do
     changeset = Project.changeset(%Project{}, project_params)
     if changeset.valid? do
-      id = Repo.insert(changeset)
+      project = Repo.insert(changeset)
       conn  |> put_flash(:info, "Project created successfully.")
-            |> redirect to: project_path(conn, :show, id)
+            |> redirect to: project_path(conn, :show, project)
     else
       render conn, :new, changeset: changeset
     end
