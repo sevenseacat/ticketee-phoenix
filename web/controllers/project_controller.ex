@@ -19,7 +19,7 @@ defmodule Ticketee.ProjectController do
   def create(conn, %{"project" => project_params}) do
     changeset = Project.changeset(%Project{}, project_params)
     if changeset.valid? do
-      project = Repo.insert(changeset)
+      project = Repo.insert!(changeset)
       conn  |> put_flash(:info, "Project created successfully.")
             |> redirect to: project_path(conn, :show, project)
     else
@@ -40,7 +40,7 @@ defmodule Ticketee.ProjectController do
   def update(conn, %{"project" => project_params}) do
     changeset = Project.changeset(conn.assigns[:project], project_params)
     if changeset.valid? do
-      Repo.update(changeset)
+      Repo.update!(changeset)
       conn  |> put_flash(:info, "Project updated successfully.")
             |> redirect to: project_path(conn, :show, conn.assigns[:project])
     else

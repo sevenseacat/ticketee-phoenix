@@ -15,7 +15,7 @@ defmodule Ticketee.TicketController do
   def create(conn, %{"project_id" => project_id, "ticket" => ticket_params}) do
     changeset = Ticket.changeset(%Ticket{}, Map.merge(ticket_params, %{"project_id" => project_id}))
     if changeset.valid? do
-      Repo.insert(changeset)
+      Repo.insert!(changeset)
       conn  |> put_flash(:info, "Ticket created successfully.")
             |> redirect to: project_path(conn, :show, conn.assigns[:project])
     else
@@ -37,7 +37,7 @@ defmodule Ticketee.TicketController do
   def update(conn, %{"ticket" => ticket_params}) do
     changeset = Ticket.changeset(conn.assigns[:ticket], ticket_params)
     if changeset.valid? do
-      Repo.update(changeset)
+      Repo.update!(changeset)
       conn  |> put_flash(:info, "Ticket updated successfully.")
             |> redirect to: project_path(conn, :show, conn.assigns[:ticket].project_id)
     else
