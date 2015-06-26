@@ -1,2 +1,4 @@
 language: elixir
 otp_release: 17.4
+before_script:
+  - "nohup phantomjs -w &"
