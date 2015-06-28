@@ -20,7 +20,7 @@ defmodule Ticketee.Mixfile do
      applications: app_list(Mix.env)]
   end
 
-  defp app_list(:test), do: [:hound | app_list]
+  defp app_list(:test), do: [:hound, :blacksmith] ++ app_list
   defp app_list(_),     do: app_list
   defp app_list,        do: [:phoenix, :phoenix_html, :cowboy, :logger,
                               :phoenix_ecto, :postgrex]
@@ -39,6 +39,7 @@ defmodule Ticketee.Mixfile do
      {:phoenix_html, "~> 1.0"},
      {:phoenix_live_reload, "~> 0.4", only: :dev},
      {:cowboy, "~> 1.0"},
-     {:hound, "~> 0.7.0", github: "HashNuke/hound", branch: "refactor"}]
+     {:hound, "~> 0.7.0", github: "HashNuke/hound", branch: "refactor", only: :test},
+     {:blacksmith, "~> 0.1", only: :test}]
   end
 end
