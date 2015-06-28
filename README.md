@@ -1,5 +1,7 @@
 # Ticketee
 
+[![Build Status](https://travis-ci.org/sevenseacat/ticketee-phoenix.svg?branch=master)](https://travis-ci.org/sevenseacat/ticketee-phoenix)
+
 This is my re-imagining of the R4IA Ticketee app, built in Elixir and Phoenix.
 
 Do _**NOT**_ take this as any sort of authoritative source on what is good Phoenix/Elixir code. I'm learning as I go along.
@@ -8,7 +10,7 @@ Written using Phoenix 0.13.1.
 
 ## Missing from this implementation
 
-* Tests. :o
+* Most tests. But I'm adding those slowly.
 
 ## Notes
 
