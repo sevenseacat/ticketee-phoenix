@@ -6,10 +6,10 @@ defmodule Ticketee.ViewProject do
     {:ok, project: project}
   end
 
-  test "Users can view projects", context do
+  test "Users can view projects" do
     navigate_to "/"
-    find_element(:link_text, context[:project].title) |> click
+    find_element(:link_text, "Sublime Text 3") |> click
 
-    assert find_element(:tag, "h1") |> visible_text == context[:project].title
+    assert visible_text({:tag, "h1"}) == "Sublime Text 3"
   end
 end
