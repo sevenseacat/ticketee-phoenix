@@ -4,7 +4,6 @@ defmodule Ticketee.ProjectController do
 
   plug :scrub_params, "project" when action in [:create, :update]
   plug :load_project when action in [:edit, :update, :show, :delete]
-  plug :action
 
   def index(conn, _) do
     projects = Repo.all(Project)

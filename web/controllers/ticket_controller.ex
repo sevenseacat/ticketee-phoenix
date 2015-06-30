@@ -5,7 +5,6 @@ defmodule Ticketee.TicketController do
   plug :scrub_params, "ticket" when action in [:create, :update]
   plug :load_project when action in [:new, :create]
   plug :load_ticket when action in [:show, :edit, :update, :delete]
-  plug :action
 
   def new(conn, _) do
     changeset = Ticket.changeset(%Ticket{})
