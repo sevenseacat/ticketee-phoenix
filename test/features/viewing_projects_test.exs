@@ -3,6 +3,7 @@ defmodule Ticketee.ViewProject do
 
   setup do
     project = Forge.saved_project Ticketee.Repo, title: "Sublime Text 3"
+
     {:ok, project: project}
   end
 
