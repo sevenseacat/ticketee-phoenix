@@ -39,15 +39,16 @@ defmodule Ticketee.TicketController do
     if changeset.valid? do
       Repo.update!(changeset)
       conn  |> put_flash(:info, "Ticket updated successfully.")
-            |> redirect to: project_path(conn, :show, conn.assigns[:ticket].project_id)
+            |> redirect to: ticket_path(conn, :show, conn.assigns[:ticket])
     else
+      project = Repo.one! assoc(conn.assigns[:ticket], :project)
       conn  |> put_flash(:error, "Ticket could not be updated.")
-            |> render :new, changeset: changeset
+            |> render :edit, changeset: changeset, project: project
     end
   end
 
   def delete(conn, _) do
-    Repo.delete conn.assigns[:ticket]
+    Repo.delete! conn.assigns[:ticket]
     conn  |> put_flash(:info, "Ticket deleted successfully.")
           |> redirect to: project_path(conn, :show, conn.assigns[:ticket].project_id)
   end

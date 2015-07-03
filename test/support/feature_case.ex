@@ -11,6 +11,7 @@ defmodule Ticketee.FeatureCase do
 
       # We duplicate this so we can use them both in this file, and in the files we use this FeatureCase in
       use Hound.Helpers
+      use Hound.Matchers
 
       # To make routing helpers available to tests
       import Ticketee.Router.Helpers

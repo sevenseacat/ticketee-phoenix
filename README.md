@@ -10,7 +10,7 @@ Written using Phoenix 0.14.0.
 
 ## Missing from this implementation
 
-* Most tests. But I'm adding those slowly.
+* Some of the tests are a little different - haven't found a way to test the current URL yet. But the rest of the functionality is now there.
 
 ## Notes
 
