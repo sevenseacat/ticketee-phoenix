@@ -50,7 +50,7 @@ defmodule Ticketee.ProjectController do
   end
 
   def delete(conn, _) do
-    Repo.delete(conn.assigns[:project])
+    Repo.delete!(conn.assigns[:project])
     conn  |> put_flash(:info, "Project deleted successfully.")
           |> redirect to: project_path(conn, :index)
   end

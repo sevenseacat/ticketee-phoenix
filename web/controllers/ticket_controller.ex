@@ -18,7 +18,8 @@ defmodule Ticketee.TicketController do
       conn  |> put_flash(:info, "Ticket created successfully.")
             |> redirect to: project_path(conn, :show, conn.assigns[:project])
     else
-      render conn, :new, changeset: changeset
+      conn  |> put_flash(:error, "Ticket could not be created.")
+            |> render :new, changeset: changeset
     end
   end
 
@@ -40,7 +41,8 @@ defmodule Ticketee.TicketController do
       conn  |> put_flash(:info, "Ticket updated successfully.")
             |> redirect to: project_path(conn, :show, conn.assigns[:ticket].project_id)
     else
-      render conn, :edit, changeset: changeset
+      conn  |> put_flash(:error, "Ticket could not be updated.")
+            |> render :new, changeset: changeset
     end
   end
 
