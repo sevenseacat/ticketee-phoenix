@@ -17,13 +17,15 @@ defmodule Ticketee.ProjectController do
 
   def create(conn, %{"project" => project_params}) do
     changeset = Project.changeset(%Project{}, project_params)
-    if changeset.valid? do
-      project = Repo.insert!(changeset)
-      conn  |> put_flash(:info, "Project created successfully.")
-            |> redirect to: project_path(conn, :show, project)
-    else
-      conn  |> put_flash(:error, "Project could not be created.")
-            |> render :new, changeset: changeset
+    case Repo.insert(changeset) do
+      {:ok, project} ->
+        conn
+        |> put_flash(:info, "Project created successfully.")
+        |> redirect to: project_path(conn, :show, project)
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Project could not be created.")
+        |> render :new, changeset: changeset
     end
   end
 
@@ -39,27 +41,38 @@ defmodule Ticketee.ProjectController do
 
   def update(conn, %{"project" => project_params}) do
     changeset = Project.changeset(conn.assigns[:project], project_params)
-    if changeset.valid? do
-      Repo.update!(changeset)
-      conn  |> put_flash(:info, "Project updated successfully.")
-            |> redirect to: project_path(conn, :show, conn.assigns[:project])
-    else
-      conn  |> put_flash(:error, "Project could not be updated.")
-            |> render :edit, changeset: changeset
+    case Repo.update(changeset) do
+      {:ok, project} ->
+        conn
+        |> put_flash(:info, "Project updated successfully.")
+        |> redirect to: project_path(conn, :show, project)
+      {:error, changeset} ->
+        conn
+        |> put_flash(:error, "Project could not be updated.")
+        |> render :edit, changeset: changeset
     end
   end
 
   def delete(conn, _) do
-    Repo.delete!(conn.assigns[:project])
-    conn  |> put_flash(:info, "Project deleted successfully.")
-          |> redirect to: project_path(conn, :index)
+    case Repo.delete(conn.assigns[:project]) do
+      {:ok, _} ->
+        conn
+        |> put_flash(:info, "Project deleted successfully.")
+        |> redirect to: project_path(conn, :index)
+      {:error, project} ->
+        conn
+        |> put_flash(:error, "Project could not be deleted.")
+        |> redirect to: project_path(conn, :show, project)
+    end
   end
 
   defp load_project(conn, _) do
     case Repo.get(Project, conn.params["id"]) do
       nil ->
-        conn  |> put_flash(:error, "The project you were looking for could not be found.")
-              |> redirect(to: project_path(conn, :index))   |> halt
+        conn
+        |> put_flash(:error, "The project you were looking for could not be found.")
+        |> redirect(to: project_path(conn, :index))
+        |> halt
       project ->
         assign(conn, :project, project)
     end

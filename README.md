@@ -6,7 +6,7 @@ This is my re-imagining of the R4IA Ticketee app, built in Elixir and Phoenix.
 
 Do _**NOT**_ take this as any sort of authoritative source on what is good Phoenix/Elixir code. I'm learning as I go along.
 
-Written using Phoenix 0.14.0.
+Written using Phoenix 0.15.0.
 
 ## Missing from this implementation
 

@@ -15,6 +15,7 @@ config :ticketee, Ticketee.Repo,
   username: "postgres",
   password: "postgres",
   database: "ticketee_test",
-  size: 1 # Use a single connection for transactional tests
+  size: 1, # Use a single connection for transactional tests
+  pool: Ecto.Adapters.SQL.Sandbox
 
 config :hound, driver: "phantomjs"

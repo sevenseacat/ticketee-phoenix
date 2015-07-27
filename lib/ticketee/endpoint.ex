@@ -31,5 +31,5 @@ defmodule Ticketee.Endpoint do
     key: "_ticketee_key",
     signing_salt: "urkCGtzi"
 
-  plug :router, Ticketee.Router
+  plug Ticketee.Router
 end
